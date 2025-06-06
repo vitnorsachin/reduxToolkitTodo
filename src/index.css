@@ -88,3 +88,8 @@ li{
   align-items: center;
   justify-content: space-between;
 }
+
+.btn-group{
+  display: flex;
+  gap: 10px;
+}
