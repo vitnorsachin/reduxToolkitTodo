@@ -4,15 +4,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeTodo, updateTodo } from "../features/todo/todoSlice";
 
 const Todos = () => {
+  // Get state data from store
   const todos = useSelector((state) => state.todos);
+
+  // Send data(state, payload) to store
   const dispatch = useDispatch();
 
   const [editingTodoId, setEditingTodoId] = useState(null);
   const [newTodoText, setNewTodoText] = useState("");
 
   const handleEditClick = (todo) => {
-    setEditingTodoId(todo.id);
-    setNewTodoText(todo.text); // Initialize the input with current todo text
+    setEditingTodoId(todo.id); // Initialize the input with current todo text
+    setNewTodoText(todo.text);
   };
 
   const handleSaveClick = (id) => {
@@ -29,7 +32,7 @@ const Todos = () => {
           return (
             <li key={todo.id}>
               {editingTodoId === todo.id ? (
-                // Render input field when editing
+              // Render input field when editing
                 <input
                   type="text"
                   value={newTodoText}
@@ -49,7 +52,9 @@ const Todos = () => {
                   <button onClick={() => handleEditClick(todo)}>✏️</button>
                 )}
                 {/* Keep the remove button */}
-                <button onClick={() => dispatch(removeTodo(todo.id))}>❌</button>
+                <button onClick={() => dispatch(removeTodo(todo.id))}>
+                  ❌
+                </button>
               </div>
             </li>
           );
